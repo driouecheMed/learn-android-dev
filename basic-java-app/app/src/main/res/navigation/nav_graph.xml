@@ -9,5 +9,5 @@
         android:id="@+id/enterTaskFragment"
         android:name="com.driouechemed.basicjavaapp.ui.EnterTaskFragment"
         android:label="EnterTaskFragment"
-        tools:layout="@layout/fragment_enter_task"/>
+        tools:layout="@layout/fragment_enter_task" />
 </navigation>

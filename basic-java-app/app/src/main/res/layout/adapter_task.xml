@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,19 +10,26 @@
         android:id="@+id/task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Task Name"
-        android:textSize="18sp"/>
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:textColor="#232F34"
+        android:textSize="16sp"
+        app:fontFamily="sans-serif-black"
+        tools:text="Task Name" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/task_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Task details"
-        android:textSize="14sp"/>
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="4dp"
+        android:textColor="#232F34"
+        android:textSize="14sp"
+        tools:text="Task details" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginVertical="4dp"
-        android:background="@color/black" />
 </LinearLayout>

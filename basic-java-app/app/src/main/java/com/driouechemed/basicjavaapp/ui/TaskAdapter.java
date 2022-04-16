@@ -19,31 +19,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private final List<Task> taskList;
 
     /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        AdapterTaskBinding binding;
-
-        public ViewHolder(View view) {
-            super(view);
-            // Define click listener for the ViewHolder's View
-            binding = AdapterTaskBinding.bind(view);
-        }
-
-        public void bind(Task task) {
-            binding.taskName.setText(task.getTaskName());
-            binding.taskDetails.setText(task.getTaskDetails());
-        }
-
-    }
-
-    /**
      * Initialize the dataset of the Adapter.
      *
      * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
+     *                by RecyclerView.
      */
     public TaskAdapter(List<Task> dataSet) {
         taskList = dataSet;
@@ -81,5 +60,26 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return taskList.size();
+    }
+
+    /**
+     * Provide a reference to the type of views that you are using
+     * (custom ViewHolder).
+     */
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        AdapterTaskBinding binding;
+
+        public ViewHolder(View view) {
+            super(view);
+            // Define click listener for the ViewHolder's View
+            binding = AdapterTaskBinding.bind(view);
+        }
+
+        public void bind(Task task) {
+            binding.taskName.setText(task.getTaskName());
+            binding.taskDetails.setText(task.getTaskDetails());
+        }
+
     }
 }
