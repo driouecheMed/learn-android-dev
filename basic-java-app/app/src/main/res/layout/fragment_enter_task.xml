@@ -14,10 +14,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/task_priority"
+        android:id="@+id/task_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/task_priority_hint"
+        android:hint="@string/task_details_hint"
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/task_name" />
 
@@ -27,7 +27,7 @@
         android:layout_height="48dp"
         android:text="@string/validate_button"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/task_priority"
+        app:layout_constraintTop_toBottomOf="@id/task_details"
         tools:layout_editor_absoluteX="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
