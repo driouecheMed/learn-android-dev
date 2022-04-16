@@ -18,11 +18,13 @@ import org.apache.commons.lang3.StringUtils;
 public class EnterTaskFragment extends Fragment {
 
     private FragmentEnterTaskBinding binding;
+    private TaskAdapter taskAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        taskAdapter = new TaskAdapter();
         binding = FragmentEnterTaskBinding.inflate(inflater);
         return binding.getRoot();
     }
@@ -31,12 +33,13 @@ public class EnterTaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.validateButton.setOnClickListener(v -> onValidateClick());
+        binding.taskList.setAdapter(taskAdapter);
     }
 
     private void onValidateClick() {
         Task userTask = new Task(binding.taskName.getText().toString(),
                 binding.taskDetails.getText().toString());
-
+        taskAdapter.addTask(userTask);
         binding.taskName.setText(StringUtils.EMPTY);
         binding.taskDetails.setText(StringUtils.EMPTY);
     }

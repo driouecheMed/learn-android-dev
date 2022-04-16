@@ -30,4 +30,13 @@
         app:layout_constraintTop_toBottomOf="@id/task_details"
         tools:layout_editor_absoluteX="24dp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/task_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        tools:listitem="@layout/adapter_task"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/validate_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
