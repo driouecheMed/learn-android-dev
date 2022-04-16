@@ -42,4 +42,6 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment:2.4.2'
     implementation 'androidx.navigation:navigation-ui:2.4.2'
+
+    implementation 'org.apache.commons:commons-text:1.7'
 }
