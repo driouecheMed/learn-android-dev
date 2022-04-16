@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="24dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hello world !!"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="@string/task_name_hint"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/task_priority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/task_priority_hint"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/task_name" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/validate_button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/validate_button"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/task_priority"
+        tools:layout_editor_absoluteX="24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
