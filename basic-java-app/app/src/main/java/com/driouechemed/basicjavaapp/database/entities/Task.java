@@ -6,16 +6,16 @@ public class Task {
 
     private String taskName;
 
-    private Integer TaskPriority;
+    private String taskDetails;
 
     public Task() {
         taskName = StringUtils.EMPTY;
-        TaskPriority = 0;
+        taskDetails = StringUtils.EMPTY;
     }
 
-    public Task(String taskName, Integer taskPriority) {
+    public Task(String taskName, String taskDetails) {
         this.taskName = taskName;
-        TaskPriority = taskPriority;
+        this.taskDetails = taskDetails;
     }
 
     public String getTaskName() {
@@ -26,11 +26,11 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public Integer getTaskPriority() {
-        return TaskPriority;
+    public String getTaskDetails() {
+        return taskDetails;
     }
 
-    public void setTaskPriority(Integer taskPriority) {
-        TaskPriority = taskPriority;
+    public void setTaskDetails(String taskDetails) {
+        this.taskDetails = taskDetails;
     }
 }
