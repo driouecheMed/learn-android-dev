@@ -1,19 +1,32 @@
 package com.driouechemed.basicjavaapp.database.entities;
 
-import org.apache.commons.lang3.StringUtils;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
+import java.util.UUID;
+
+@Entity(tableName = "task")
 public class Task {
 
+    @PrimaryKey
+    @ColumnInfo(name = "uuid")
+    private final String uuid;
+
+    @ColumnInfo(name = "task_name")
     private String taskName;
 
+    @ColumnInfo(name = "task_details")
     private String taskDetails;
 
     public Task() {
-        taskName = StringUtils.EMPTY;
-        taskDetails = StringUtils.EMPTY;
+        uuid = UUID.randomUUID().toString();
     }
 
+    @Ignore
     public Task(String taskName, String taskDetails) {
+        this();
         this.taskName = taskName;
         this.taskDetails = taskDetails;
     }
