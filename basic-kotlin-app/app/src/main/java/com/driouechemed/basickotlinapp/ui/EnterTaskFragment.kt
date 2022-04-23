@@ -1,11 +1,11 @@
 package com.driouechemed.basickotlinapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.driouechemed.basickotlinapp.R
 import com.driouechemed.basickotlinapp.database.entities.Task
 import com.driouechemed.basickotlinapp.databinding.FragmentEnterTaskBinding
 
@@ -28,8 +28,12 @@ class EnterTaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.taskList.adapter = taskAdapter
         binding.validateButton.setOnClickListener {
-            taskAdapter.addTask(getFieldsData())
-            clearInputFields()
+            if (binding.taskName.editText?.text.toString().isEmpty()) {
+                binding.taskName.editText?.error = getString(R.string.mandatory_field)
+            } else {
+                taskAdapter.addTask(getFieldsData())
+                clearInputFields()
+            }
         }
     }
 

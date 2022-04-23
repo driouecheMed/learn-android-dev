@@ -2,4 +2,5 @@
 <resources>
     <dimen name="fragment_padding">24dp</dimen>
     <dimen name="vertical_spacing">12dp</dimen>
+    <dimen name="list_height">64dp</dimen>
 </resources>

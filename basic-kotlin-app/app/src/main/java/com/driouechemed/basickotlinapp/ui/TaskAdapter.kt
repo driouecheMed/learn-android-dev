@@ -2,6 +2,7 @@ package com.driouechemed.basickotlinapp.ui
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.driouechemed.basickotlinapp.R
@@ -34,7 +35,11 @@ class TaskAdapter(private val tasks: ArrayList<Task> = ArrayList()) :
 
         fun bind(task: Task) {
             binding.taskName.text = task.name
-            binding.taskDetails.text = task.details ?: ""
+            if (task.details.isNullOrEmpty()) {
+                binding.taskDetails.visibility = GONE
+            } else {
+                binding.taskDetails.text = task.details
+            }
         }
     }
 }
