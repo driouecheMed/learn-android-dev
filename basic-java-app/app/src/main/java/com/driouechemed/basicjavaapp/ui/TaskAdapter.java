@@ -20,17 +20,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private final List<Task> tasks;
 
-    public TaskAdapter(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
     public TaskAdapter() {
         tasks = new ArrayList<>();
     }
 
-    public void addTask(Task task) {
-        tasks.add(task);
-        notifyItemInserted(tasks.size() - 1);
+    public void addTasks(List<Task> tasks) {
+        this.tasks.clear();
+        this.tasks.addAll(tasks);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -65,6 +62,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             if (StringUtils.isEmpty(task.getTaskDetails())) {
                 binding.taskDetails.setVisibility(View.GONE);
             } else {
+                binding.taskDetails.setVisibility(View.VISIBLE);
                 binding.taskDetails.setText(task.getTaskDetails());
             }
         }

@@ -27,7 +27,11 @@ public class EnterTaskFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
         taskAdapter = new TaskAdapter();
+        taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
+        taskViewModel.getTasksFromDb();
+
         binding = FragmentEnterTaskBinding.inflate(inflater);
         return binding.getRoot();
     }
@@ -36,7 +40,7 @@ public class EnterTaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
+        taskViewModel.getTasks().observe(getViewLifecycleOwner(), taskAdapter::addTasks);
 
         binding.validateButton.setOnClickListener(v -> onValidateClick());
         binding.taskList.setAdapter(taskAdapter);
@@ -47,14 +51,16 @@ public class EnterTaskFragment extends Fragment {
             if (StringUtils.isEmpty(binding.taskName.getEditText().getText().toString())) {
                 binding.taskName.getEditText().setError(getString(R.string.mandatory_field));
             } else {
-                Task userTask = new Task(binding.taskName.getEditText().getText().toString(),
-                        binding.taskDetails.getEditText().getText().toString());
-                taskAdapter.addTask(userTask);
-                taskViewModel.insert(userTask);
-
+                insertTask();
                 clearInputs();
             }
         }
+    }
+
+    private void insertTask() {
+        Task userTask = new Task(binding.taskName.getEditText().getText().toString(),
+                binding.taskDetails.getEditText().getText().toString());
+        taskViewModel.insert(userTask);
     }
 
     private void clearInputs() {
