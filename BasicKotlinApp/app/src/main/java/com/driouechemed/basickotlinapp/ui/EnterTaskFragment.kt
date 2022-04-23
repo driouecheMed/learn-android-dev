@@ -12,6 +12,7 @@ import com.driouechemed.basickotlinapp.databinding.FragmentEnterTaskBinding
 class EnterTaskFragment : Fragment() {
 
     private lateinit var binding: FragmentEnterTaskBinding
+    private val taskAdapter = TaskAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,8 +26,9 @@ class EnterTaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.taskList.adapter = taskAdapter
         binding.validateButton.setOnClickListener {
-            Log.d("TAG", getFieldsData().toString())
+            taskAdapter.addTask(getFieldsData())
             clearInputFields()
         }
     }
