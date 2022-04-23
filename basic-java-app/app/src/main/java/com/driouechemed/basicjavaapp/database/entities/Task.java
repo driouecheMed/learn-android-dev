@@ -1,5 +1,6 @@
 package com.driouechemed.basicjavaapp.database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -10,9 +11,10 @@ import java.util.UUID;
 @Entity(tableName = "task")
 public class Task {
 
+    @NonNull
     @PrimaryKey
     @ColumnInfo(name = "uuid")
-    private final String uuid;
+    private String uuid;
 
     @ColumnInfo(name = "task_name")
     private String taskName;
@@ -29,6 +31,14 @@ public class Task {
         this();
         this.taskName = taskName;
         this.taskDetails = taskDetails;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getTaskName() {
