@@ -3,4 +3,5 @@
     <string name="task_name_hint">Task Name</string>
     <string name="task_details_hint">Task Details</string>
     <string name="validate_button">Validate</string>
+    <string name="mandatory_field">Mandatory field</string>
 </resources>

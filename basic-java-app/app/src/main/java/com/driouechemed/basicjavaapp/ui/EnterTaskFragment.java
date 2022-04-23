@@ -1,7 +1,6 @@
 package com.driouechemed.basicjavaapp.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.driouechemed.basicjavaapp.R;
 import com.driouechemed.basicjavaapp.database.entities.Task;
 import com.driouechemed.basicjavaapp.databinding.FragmentEnterTaskBinding;
 
@@ -37,10 +37,24 @@ public class EnterTaskFragment extends Fragment {
     }
 
     private void onValidateClick() {
-        Task userTask = new Task(binding.taskName.getText().toString(),
-                binding.taskDetails.getText().toString());
-        taskAdapter.addTask(userTask);
-        binding.taskName.setText(StringUtils.EMPTY);
-        binding.taskDetails.setText(StringUtils.EMPTY);
+        if (binding.taskName.getEditText() != null) {
+            if (StringUtils.isEmpty(binding.taskName.getEditText().getText().toString())) {
+                binding.taskName.getEditText().setError(getString(R.string.mandatory_field));
+            } else {
+                Task userTask = new Task(binding.taskName.getEditText().getText().toString(),
+                        binding.taskDetails.getEditText().getText().toString());
+                taskAdapter.addTask(userTask);
+
+                clearInputs();
+            }
+        }
+    }
+
+    private void clearInputs() {
+        binding.taskName.getEditText().clearFocus();
+        binding.taskDetails.getEditText().clearFocus();
+
+        binding.taskName.getEditText().getText().clear();
+        binding.taskDetails.getEditText().getText().clear();
     }
 }

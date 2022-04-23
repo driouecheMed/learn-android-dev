@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="@dimen/list_height"
+    android:gravity="center"
+    android:layout_marginVertical="2dp"
+    android:background="@drawable/task_background"
+    android:orientation="vertical"
+    android:padding="8dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Task Name"
-        android:textSize="18sp"/>
+        android:textColor="?android:textColor"
+        android:textSize="18sp"
+        tools:text="Task Name" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/task_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Task details"
-        android:textSize="14sp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginVertical="4dp"
-        android:background="@color/black" />
-</LinearLayout>
+        android:textColor="?android:textColor"
+        android:textSize="14sp"
+        tools:text="Task details" />
+</androidx.appcompat.widget.LinearLayoutCompat>
