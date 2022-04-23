@@ -33,11 +33,12 @@ public class Task {
         this.taskDetails = taskDetails;
     }
 
+    @NonNull
     public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(@NonNull String uuid) {
         this.uuid = uuid;
     }
 
