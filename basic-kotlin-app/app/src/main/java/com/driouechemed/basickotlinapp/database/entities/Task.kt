@@ -1,9 +1,14 @@
 package com.driouechemed.basickotlinapp.database.entities
 
+import androidx.annotation.NonNull
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity(tableName = "task")
 data class Task(
-    val uuid: String = UUID.randomUUID().toString(),
-    var name: String,
-    var details: String?
+    @NonNull @PrimaryKey val uuid: String = UUID.randomUUID().toString(),
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "details") var details: String?
 )

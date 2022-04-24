@@ -3,6 +3,7 @@ package com.driouechemed.basickotlinapp.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.driouechemed.basickotlinapp.R
@@ -24,9 +25,10 @@ class TaskAdapter(private val tasks: ArrayList<Task> = ArrayList()) :
 
     override fun getItemCount() = tasks.size
 
-    fun addTask(task: Task) {
-        tasks.add(task)
-        notifyItemChanged(tasks.size - 1)
+    fun addTasks(tasks: ArrayList<Task>) {
+        this.tasks.clear()
+        this.tasks.addAll(tasks)
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -38,6 +40,7 @@ class TaskAdapter(private val tasks: ArrayList<Task> = ArrayList()) :
             if (task.details.isNullOrEmpty()) {
                 binding.taskDetails.visibility = GONE
             } else {
+                binding.taskDetails.visibility = VISIBLE
                 binding.taskDetails.text = task.details
             }
         }

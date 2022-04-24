@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.driouechemed.basickotlinapp.R
 import com.driouechemed.basickotlinapp.database.entities.Task
 import com.driouechemed.basickotlinapp.databinding.FragmentEnterTaskBinding
+import com.driouechemed.basickotlinapp.viewmodels.TaskViewModel
 
 class EnterTaskFragment : Fragment() {
 
@@ -26,12 +28,17 @@ class EnterTaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // todo: init with "by viewmodels()"
+        val taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        taskViewModel.getTasksLiveData().observe(viewLifecycleOwner, taskAdapter::addTasks)
+
         binding.taskList.adapter = taskAdapter
+
         binding.validateButton.setOnClickListener {
             if (binding.taskName.editText?.text.toString().isEmpty()) {
                 binding.taskName.editText?.error = getString(R.string.mandatory_field)
             } else {
-                taskAdapter.addTask(getFieldsData())
+                taskViewModel.insert(getFieldsData())
                 clearInputFields()
             }
         }
