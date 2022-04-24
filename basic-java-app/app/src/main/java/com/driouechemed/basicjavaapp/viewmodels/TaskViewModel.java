@@ -1,4 +1,4 @@
-package com.driouechemed.basicjavaapp.viewmodel;
+package com.driouechemed.basicjavaapp.viewmodels;
 
 import android.app.Application;
 
@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.driouechemed.basicjavaapp.database.AppDatabase;
 import com.driouechemed.basicjavaapp.database.entities.Task;
-import com.driouechemed.basicjavaapp.repository.TaskRepository;
+import com.driouechemed.basicjavaapp.repositories.TaskRepository;
 
 import java.util.List;
 

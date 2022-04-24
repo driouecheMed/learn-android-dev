@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.driouechemed.basicjavaapp.R;
 import com.driouechemed.basicjavaapp.database.entities.Task;
 import com.driouechemed.basicjavaapp.databinding.FragmentEnterTaskBinding;
-import com.driouechemed.basicjavaapp.viewmodel.TaskViewModel;
+import com.driouechemed.basicjavaapp.viewmodels.TaskViewModel;
 
 import org.apache.commons.lang3.StringUtils;
 

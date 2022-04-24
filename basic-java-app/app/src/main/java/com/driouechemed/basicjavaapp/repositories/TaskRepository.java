@@ -1,4 +1,4 @@
-package com.driouechemed.basicjavaapp.repository;
+package com.driouechemed.basicjavaapp.repositories;
 
 import com.driouechemed.basicjavaapp.database.AppDatabase;
 import com.driouechemed.basicjavaapp.database.entities.Task;
