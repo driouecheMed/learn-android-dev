@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.driouechemed.basickotlinapp.R
+import com.driouechemed.basickotlinapp.database.DatabaseProvider
 import com.driouechemed.basickotlinapp.database.entities.Task
 import com.driouechemed.basickotlinapp.databinding.FragmentEnterTaskBinding
+import com.driouechemed.basickotlinapp.repositories.TaskRepository
 import com.driouechemed.basickotlinapp.viewmodels.TaskViewModel
 
 class EnterTaskFragment : Fragment() {
@@ -28,8 +30,10 @@ class EnterTaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // todo: init with "by viewmodels()"
-        val taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        val taskRepository = TaskRepository(DatabaseProvider.getInstance(requireContext()))
+        val viewModelFactory = TaskViewModel.Factory(taskRepository)
+        val taskViewModel = ViewModelProvider(this, viewModelFactory).get(TaskViewModel::class.java)
+
         taskViewModel.getTasksLiveData().observe(viewLifecycleOwner, taskAdapter::addTasks)
 
         binding.taskList.adapter = taskAdapter

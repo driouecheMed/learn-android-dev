@@ -1,43 +1,35 @@
 package com.driouechemed.basickotlinapp.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.driouechemed.basickotlinapp.database.DatabaseProvider
+import androidx.lifecycle.*
 import com.driouechemed.basickotlinapp.database.entities.Task
 import com.driouechemed.basickotlinapp.repositories.TaskRepository
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
-class TaskViewModel(application: Application) : AndroidViewModel(application) {
+class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
 
     private val tasksLiveData = MutableLiveData<ArrayList<Task>>()
 
-    /*
-    todo: init repo in constructor
-    private val taskRepository: TaskRepository
-    init {
-        taskRepository = TaskRepository(DatabaseProvider.getInstance(getApplication()))
-
-    }*/
-
     init {
         viewModelScope.launch{
-            TaskRepository(DatabaseProvider.getInstance(getApplication()))
-                .getAll().collect {
+            taskRepository.getAll().collect {
                         tasks -> tasksLiveData.value = ArrayList(tasks)
                 }
         }
     }
 
     fun insert(task: Task) {
-        viewModelScope.launch { TaskRepository(DatabaseProvider.getInstance(getApplication())).insert(task) }
+        viewModelScope.launch { taskRepository.insert(task) }
     }
 
     fun getTasksLiveData(): LiveData<ArrayList<Task>> {
         return tasksLiveData;
+    }
+
+    class Factory(private val taskRepository: TaskRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return TaskViewModel(taskRepository) as T
+        }
     }
 }

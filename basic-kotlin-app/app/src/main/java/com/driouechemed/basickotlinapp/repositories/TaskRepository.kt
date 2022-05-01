@@ -4,8 +4,7 @@ import com.driouechemed.basickotlinapp.database.AppDatabase
 import com.driouechemed.basickotlinapp.database.entities.Task
 import kotlinx.coroutines.flow.Flow
 
-class TaskRepository(appDatabase: AppDatabase) {
-    private val appDatabase: AppDatabase = appDatabase
+class TaskRepository(private val appDatabase: AppDatabase) {
 
     suspend fun insert(task: Task) {
         return appDatabase.taskDao().insert(task)
