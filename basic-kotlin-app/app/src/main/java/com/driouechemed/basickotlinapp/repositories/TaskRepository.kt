@@ -1,16 +1,11 @@
 package com.driouechemed.basickotlinapp.repositories
 
-import com.driouechemed.basickotlinapp.database.AppDatabase
 import com.driouechemed.basickotlinapp.database.entities.Task
 import kotlinx.coroutines.flow.Flow
 
-class TaskRepository(private val appDatabase: AppDatabase) {
+interface TaskRepository {
 
-    suspend fun insert(task: Task) {
-        return appDatabase.taskDao().insert(task)
-    }
+    suspend fun insert(task: Task)
 
-    fun getAll(): Flow<List<Task>> {
-        return appDatabase.taskDao().getAll()
-    }
+    fun getAll(): Flow<List<Task>>
 }

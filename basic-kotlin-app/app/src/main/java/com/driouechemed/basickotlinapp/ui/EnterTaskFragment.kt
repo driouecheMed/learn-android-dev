@@ -10,7 +10,7 @@ import com.driouechemed.basickotlinapp.R
 import com.driouechemed.basickotlinapp.database.DatabaseProvider
 import com.driouechemed.basickotlinapp.database.entities.Task
 import com.driouechemed.basickotlinapp.databinding.FragmentEnterTaskBinding
-import com.driouechemed.basickotlinapp.repositories.TaskRepository
+import com.driouechemed.basickotlinapp.repositories.TaskRepositoryImpl
 import com.driouechemed.basickotlinapp.viewmodels.TaskViewModel
 
 class EnterTaskFragment : Fragment() {
@@ -30,7 +30,7 @@ class EnterTaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val taskRepository = TaskRepository(DatabaseProvider.getInstance(requireContext()))
+        val taskRepository = TaskRepositoryImpl(DatabaseProvider.getInstance(requireContext()))
         val viewModelFactory = TaskViewModel.Factory(taskRepository)
         val taskViewModel = ViewModelProvider(this, viewModelFactory).get(TaskViewModel::class.java)
 
