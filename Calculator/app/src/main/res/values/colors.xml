@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="option_btn">#2B2B31</color>
+    <color name="number_btn">#373C43</color>
+    <color name="blue">#A7BCEF</color>
+
+    <color name="black">#1D1F2C</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
