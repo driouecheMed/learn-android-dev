@@ -33,12 +33,15 @@ public class CalculatorViewModel extends AndroidViewModel {
 
     public void back() {
         operand.back();
+        this.numberToDisplay.setValue(operand.getOperand());
     }
 
     public void clearAll() {
         operand.clear();
         this.numberToDisplay.setValue("0");
         this.expressionToDisplay.setValue("");
+        this.currentValue = 0.0;
+        this.currentOperation = "";
     }
 
     public void clearInput() {
@@ -62,7 +65,7 @@ public class CalculatorViewModel extends AndroidViewModel {
     }
 
     public void setOperation(String op) {
-        if (op.equals(currentOperation)){ return; }
+        if (op.equals(currentOperation) && operand.isEmpty()){ return; }
 
         if (!operand.isEmpty()){
             double newNumber = operand.pop();
