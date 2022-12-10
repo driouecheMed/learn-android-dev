@@ -8,7 +8,6 @@ import com.ahbari.Calculator.operations.Subtract;
 
 
 public class OperationFactory {
-    private Operation operation;
 
     public static double calculate (double a, double b, String op){
         switch (op){
