@@ -1,7 +1,30 @@
 package com.ahbari.Calculator.operand;
 
 public class Operand {
+    public static final int operandMaxLen = 7 ;
+
     private String operand ;
+
+    public static String formatNumber( double d){
+        String[] numParts ;
+
+        if (d % 1.0 == 0){
+            numParts = new String[]{ String.valueOf((long) d) , "0"};
+        } else {
+            numParts = Double.toString(d).split("\\.");
+        }
+
+        int len = numParts[0].length();
+        if (len > operandMaxLen) {
+            return numParts[0].substring(0,operandMaxLen) + "e" + (len - operandMaxLen);
+        } else if (!numParts[1].equals("0")) {
+            if (numParts[1].length() > 2 + operandMaxLen - len)
+                return  numParts[0] + "." + numParts[1].substring(2 + operandMaxLen - len);
+            return numParts[0] + "." + numParts[1];
+        }
+
+        return numParts[0];
+    }
 
     public Operand(){
         this.operand = "0";
