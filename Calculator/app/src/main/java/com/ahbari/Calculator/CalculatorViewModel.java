@@ -13,7 +13,7 @@ public class CalculatorViewModel extends AndroidViewModel {
 
     private final MutableLiveData<String> numberToDisplay = new MutableLiveData<>();
     private final MutableLiveData<String> expressionToDisplay = new MutableLiveData<>();
-    private Operand operand;
+    private final Operand operand;
     private double currentValue ;
     private String currentOperation ;
 
@@ -50,30 +50,45 @@ public class CalculatorViewModel extends AndroidViewModel {
     }
 
     public void equal() {
-        if (operand.isEmpty()){ return; }
 
-        double newNumber = operand.pop();
-        if (currentValue != 0.0) {
-            String expression = currentValue + currentOperation + newNumber + " =" ;
-            expressionToDisplay.setValue(expression);
-        } else {
-            expressionToDisplay.setValue(String.valueOf(newNumber));
+        try {
+            double newNumber = operand.pop();
+            if (currentValue != 0.0) {
+                String expression = Operand.formatNumber(currentValue)
+                        + " " + currentOperation + " "
+                        + Operand.formatNumber(newNumber)
+                        + " =" ;
+
+                expressionToDisplay.setValue(expression);
+            } else {
+                expressionToDisplay.setValue(Operand.formatNumber(newNumber));
+            }
+            this.currentValue = OperationFactory.calculate(currentValue, newNumber, currentOperation);
+            this.numberToDisplay.setValue(Operand.formatNumber(currentValue));
+
+            // to be ready for new operation
+            currentOperation = "";
+        } catch (Exception e){
+            clearAll();
+            this.expressionToDisplay.setValue(e.getMessage());
         }
 
-        this.currentValue = OperationFactory.calculate(currentValue, newNumber, currentOperation);
-        this.numberToDisplay.setValue(String.valueOf(currentValue));
     }
 
     public void setOperation(String op) {
-        if (op.equals(currentOperation) && operand.isEmpty()){ return; }
-
-        if (!operand.isEmpty()){
-            double newNumber = operand.pop();
-            currentValue = OperationFactory.calculate(currentValue , newNumber, currentOperation);
-            numberToDisplay.setValue(String.valueOf(currentValue));
+        try {
+            if (!operand.isEmpty()){
+                double newNumber = operand.pop();
+                currentValue = OperationFactory.calculate(currentValue , newNumber, currentOperation);
+                numberToDisplay.setValue(Operand.formatNumber(currentValue));
+            }
+            this.currentOperation = op;
+            expressionToDisplay.setValue(Operand.formatNumber(currentValue) + " " + currentOperation);
+        } catch (Exception e){
+            clearAll();
+            this.expressionToDisplay.setValue(e.getMessage());
         }
-        this.currentOperation = op;
-        expressionToDisplay.setValue(currentValue + " " + currentOperation);
+
     }
 
     public void addDigit(String d) {
