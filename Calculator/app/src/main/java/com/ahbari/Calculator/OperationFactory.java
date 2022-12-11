@@ -9,7 +9,7 @@ import com.ahbari.Calculator.operations.Subtract;
 
 public class OperationFactory {
 
-    public static double calculate (double a, double b, String op){
+    public static double calculate (double a, double b, String op) throws Exception{
         switch (op){
             case "+" :
                 return new Add().perform(a,b);
