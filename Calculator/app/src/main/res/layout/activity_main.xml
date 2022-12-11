@@ -11,12 +11,14 @@
         android:id="@+id/operation_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
         android:paddingEnd="20dp"
         android:textAlignment="textEnd"
         android:textColor="@color/blue"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/input_number"
+        app:layout_constraintBottom_toTopOf="@+id/input_number_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,20 +60,22 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button_back"
-                style="@style/option_btn"
-                android:gravity="center"
-                android:text="back" />
-
-            <Button
                 android:id="@+id/button_c"
                 style="@style/option_btn"
                 android:text="C" />
 
             <Button
-                android:id="@+id/button_modulo"
+                android:id="@+id/button_clear"
                 style="@style/option_btn"
-                android:text="%" />
+                android:text="CE" />
+
+            <ImageButton
+                android:id="@+id/button_back"
+                style="@style/option_btn"
+                android:layout_width="88dp"
+                android:gravity="center"
+                android:src="@android:drawable/ic_input_delete"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/button_division"
@@ -171,9 +175,9 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button_clear"
-                style="@style/number_btn"
-                android:text="CE" />
+                android:id="@+id/button_modulo"
+                style="@style/option_btn"
+                android:text="%" />
 
             <Button
                 android:id="@+id/button_0"
