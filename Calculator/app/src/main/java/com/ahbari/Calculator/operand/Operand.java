@@ -31,6 +31,8 @@ public class Operand {
     }
 
     public void addDigit(String d) {
+        if (operand.length() > operandMaxLen + 2) return;
+
         if (d.matches("^[0-9]+$")){
             if (this.operand.equals("0")){
                 this.operand = d;
