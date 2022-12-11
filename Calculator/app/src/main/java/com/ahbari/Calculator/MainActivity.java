@@ -24,19 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         viewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
 
-        viewModel.getNumberToDisplay().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.inputNumberTv.setText(s);
-            }
-        });
+        viewModel.getNumberToDisplay().observe(this, s -> binding.inputNumberTv.setText(s) );
 
-        viewModel.getExpressionToDisplay().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.operationTv.setText(s);
-            }
-        });
+        viewModel.getExpressionToDisplay().observe(this, s -> binding.operationTv.setText(s));
 
         binding.button0.setOnClickListener(this);
         binding.button1.setOnClickListener(this);
@@ -64,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        Button btn = (Button) findViewById(view.getId()) ;
+        Button btn = findViewById(view.getId());
 
         switch (btn.getText().toString()) {
             case "back" :
