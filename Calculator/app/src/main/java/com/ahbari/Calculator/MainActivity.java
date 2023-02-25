@@ -14,7 +14,7 @@ import com.ahbari.Calculator.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     private CalculatorViewModel viewModel;
 
     @Override
@@ -80,7 +80,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewModel.addDigit(btn.getText().toString());
                 break;
         }
-
     }
-
 }
