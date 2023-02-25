@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import com.ahbari.Calculator.databinding.ActivityMainBinding;
 
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         viewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
 
-        viewModel.getNumberToDisplay().observe(this, s -> binding.inputNumberTv.setText(s) );
+        viewModel.getNumberToDisplay().observe(this, s -> binding.inputNumberTv.setText(s));
 
         viewModel.getExpressionToDisplay().observe(this, s -> binding.operationTv.setText(s));
 
@@ -51,29 +52,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @Override
     public void onClick(View view) {
         Button btn = findViewById(view.getId());
 
         switch (btn.getText().toString()) {
-            case "back" :
+            case "back":
                 viewModel.back();
                 break;
-            case "C" :
+            case "C":
                 viewModel.clearAll();
                 break;
-            case "CE" :
+            case "CE":
                 viewModel.clearInput();
                 break;
-            case "=" :
+            case "=":
                 viewModel.equal();
                 break;
-            case "+" :
-            case "-" :
-            case "*" :
-            case "/" :
-            case "%" :
+            case "+":
+            case "-":
+            case "*":
+            case "/":
+            case "%":
                 viewModel.setOperation(btn.getText().toString());
                 break;
             default:

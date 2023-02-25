@@ -14,8 +14,8 @@ public class CalculatorViewModel extends AndroidViewModel {
     private final MutableLiveData<String> numberToDisplay = new MutableLiveData<>();
     private final MutableLiveData<String> expressionToDisplay = new MutableLiveData<>();
     private final Operand operand;
-    private double currentValue ;
-    private String currentOperation ;
+    private double currentValue;
+    private String currentOperation;
 
     public CalculatorViewModel(@NonNull Application application) {
         super(application);
@@ -27,6 +27,7 @@ public class CalculatorViewModel extends AndroidViewModel {
     public LiveData<String> getNumberToDisplay() {
         return this.numberToDisplay;
     }
+
     public LiveData<String> getExpressionToDisplay() {
         return this.expressionToDisplay;
     }
@@ -57,7 +58,7 @@ public class CalculatorViewModel extends AndroidViewModel {
                 String expression = Operand.formatNumber(currentValue)
                         + " " + currentOperation + " "
                         + Operand.formatNumber(newNumber)
-                        + " =" ;
+                        + " =";
 
                 expressionToDisplay.setValue(expression);
             } else {
@@ -68,7 +69,7 @@ public class CalculatorViewModel extends AndroidViewModel {
 
             // to be ready for new operation
             currentOperation = "";
-        } catch (Exception e){
+        } catch (Exception e) {
             clearAll();
             this.expressionToDisplay.setValue(e.getMessage());
         }
@@ -77,14 +78,14 @@ public class CalculatorViewModel extends AndroidViewModel {
 
     public void setOperation(String op) {
         try {
-            if (!operand.isEmpty()){
+            if (!operand.isEmpty()) {
                 double newNumber = operand.pop();
-                currentValue = OperationFactory.calculate(currentValue , newNumber, currentOperation);
+                currentValue = OperationFactory.calculate(currentValue, newNumber, currentOperation);
                 numberToDisplay.setValue(Operand.formatNumber(currentValue));
             }
             this.currentOperation = op;
             expressionToDisplay.setValue(Operand.formatNumber(currentValue) + " " + currentOperation);
-        } catch (Exception e){
+        } catch (Exception e) {
             clearAll();
             this.expressionToDisplay.setValue(e.getMessage());
         }
