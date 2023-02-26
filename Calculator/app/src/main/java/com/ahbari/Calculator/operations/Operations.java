@@ -17,13 +17,11 @@ public class Operations {
         return a - b;
     }
 
-    public static double Divide(double a, double b) throws Exception {
+    public static double Divide(double a, double b) throws ArithmeticException {
         if (b != 0) {
             return a / b;
         } else {
-            throw new Exception("can't divide on 0");
+            throw new ArithmeticException("can't divide on 0");
         }
     }
-
-
 }
