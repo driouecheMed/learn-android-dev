@@ -12,8 +12,9 @@ public class Operand {
         if (len > operandMaxLen) {
             return numParts[0].substring(0, operandMaxLen) + "e" + (len - operandMaxLen);
         } else if (!numParts[1].equals("0")) {
-            if (numParts[1].length() > 2 + operandMaxLen - len)
-                return numParts[0] + "." + numParts[1].substring(2 + operandMaxLen - len);
+            int decimalPartLen = 2 + operandMaxLen - len;
+            if (numParts[1].length() > decimalPartLen)
+                return numParts[0] + "." + numParts[1].substring(decimalPartLen);
             return numParts[0] + "." + numParts[1];
         }
 
