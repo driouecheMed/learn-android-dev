@@ -6,13 +6,7 @@ public class Operand {
     private String operand;
 
     public static String formatNumber(double d) {
-        String[] numParts;
-
-        if (d % 1.0 == 0) {
-            numParts = new String[]{String.valueOf((long) d), "0"};
-        } else {
-            numParts = Double.toString(d).split("\\.");
-        }
+        String[] numParts = splitNumber(d);
 
         int len = numParts[0].length();
         if (len > operandMaxLen) {
@@ -72,5 +66,11 @@ public class Operand {
         return res;
     }
 
-
+    // a method that splits the double value into its integer and decimal parts
+    private static String[] splitNumber(double d) {
+        if (d % 1.0 == 0) {
+            return new String[]{String.valueOf((long) d), "0"};
+        }
+        return Double.toString(d).split("\\.");
+    }
 }
