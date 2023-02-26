@@ -67,7 +67,6 @@ public class Operand {
         return res;
     }
 
-    // a method that splits the double value into its integer and decimal parts
     private static String[] splitNumber(double d) {
         if (d % 1.0 == 0) {
             return new String[]{String.valueOf((long) d), "0"};
