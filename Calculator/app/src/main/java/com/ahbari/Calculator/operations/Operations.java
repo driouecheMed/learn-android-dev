@@ -24,4 +24,6 @@ public class Operations {
             throw new ArithmeticException("can't divide on 0");
         }
     }
+
+
 }

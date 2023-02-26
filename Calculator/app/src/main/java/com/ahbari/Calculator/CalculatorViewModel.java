@@ -69,7 +69,7 @@ public class CalculatorViewModel extends AndroidViewModel {
 
             // to be ready for new operation
             currentOperation = "";
-        } catch (Exception e) {
+        } catch (ArithmeticException e) {
             clearAll();
             this.expressionToDisplay.setValue(e.getMessage());
         }
@@ -85,7 +85,7 @@ public class CalculatorViewModel extends AndroidViewModel {
             }
             this.currentOperation = op;
             expressionToDisplay.setValue(Operand.formatNumber(currentValue) + " " + currentOperation);
-        } catch (Exception e) {
+        } catch (ArithmeticException e) {
             clearAll();
             this.expressionToDisplay.setValue(e.getMessage());
         }
@@ -96,5 +96,4 @@ public class CalculatorViewModel extends AndroidViewModel {
         operand.addDigit(d);
         numberToDisplay.setValue(operand.getOperand());
     }
-
 }

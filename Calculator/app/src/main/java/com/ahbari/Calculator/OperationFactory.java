@@ -5,7 +5,7 @@ import com.ahbari.Calculator.operations.Operations;
 
 public class OperationFactory {
 
-    public static double calculate(double a, double b, String op) throws Exception {
+    public static double calculate(double a, double b, String op) throws ArithmeticException {
         switch (op) {
             case "+":
                 return Operations.add(a, b);
