@@ -11,6 +11,14 @@ Light mode version          |  Dark mode version
 :-------------------------:|:-------------------------:
 <img src="https://github.com/driouecheMed/learn-android-dev/blob/main/screenshots/basic-app-light-mode.jpeg" width="250" height="450" alt="light-mode-version" />  |  <img src="https://github.com/driouecheMed/learn-android-dev/blob/main/screenshots/basic-app-dark-mode.jpeg" width="250" height="450" alt="dark-mode-version" />
 
+
+### 2. [Calculator](./Calculator):
+
+A simple calculator app for Android using MVVM and the Factory Design Pattern to choose the right operation.
+
+<img src="./screenshots/Calculator.jpg" height="450" alt="calculator app" />
+
+
 ## Contribute
 1. Create a personal fork of the project on Github.
 2. Clone the fork on your local machine. Your remote repo on Github is called origin.
@@ -23,7 +31,3 @@ Light mode version          |  Dark mode version
 9. From your fork open a pull request to the `main` branch.
 10. If the maintainer requests further changes just push them to your branch. The PR will be updated automatically.
 11. Once the pull request is approved and merged you can pull the changes from upstream to your local repo and delete your extra branch(es).
-
-
-
-
