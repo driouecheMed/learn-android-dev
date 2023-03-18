@@ -27,6 +27,7 @@ class DatabaseModule {
     }
 
     @Provides
+    @Singleton
     fun provideUserDao(appDatabase: AppDatabase): UserDao {
         return appDatabase.UserDao()
     }
