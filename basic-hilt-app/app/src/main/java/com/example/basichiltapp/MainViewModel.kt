@@ -8,6 +8,7 @@ import com.example.basichiltapp.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.random.Random
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -17,9 +18,8 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val users = listOf(
-                User(name = "user1"),
-                User(name = "user2"),
-                User(name = "user3"),
+                User(name = "user-${Random.nextInt(1, 1000)}"),
+                User(name = "user-${Random.nextInt(1, 1000)}"),
             )
             userRepository.insertUser(users)
         }
