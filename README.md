@@ -19,6 +19,14 @@ A simple calculator app for Android using MVVM and the Factory Design Pattern to
 
 <img src="./screenshots/Calculator.jpg" height="450" alt="calculator app" />
 
+### [Basic Hilt App](./basic-hilt-app):
+
+Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
+
+This is a simple app with Hilt. In this app we:
+- Insert items to database on app startup.
+- Fetch database items and display them in a text.
+
 
 ## Contribute
 To contribute to this project, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) file before submitting a pull request.
