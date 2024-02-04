@@ -19,6 +19,7 @@ A simple calculator app for Android using MVVM and the Factory Design Pattern to
 
 <img src="./screenshots/Calculator.jpg" height="450" alt="calculator app" />
 
+
 ### [Basic Hilt App](./basic-hilt-app):
 
 Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
@@ -26,6 +27,13 @@ Hilt is a dependency injection library for Android that reduces the boilerplate 
 This is a simple app with Hilt. In this app we:
 - Insert items to database on app startup.
 - Fetch database items and display them in a text.
+
+
+### [Basic Jetpack Compose App](./basic-jetpack-compose-app):
+
+A simple android app using Jetpack Compose that count the number of a button click.
+
+<img src="./screenshots/basic-jetpack-compose-app.jpeg" height="450" alt="basic jetpack compose app" />
 
 
 ## Contribute
